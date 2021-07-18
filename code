@@ -1,0 +1,30 @@
+class Solution{
+    public:
+ int lenOfLongSubarr(int A[],  int n, int k) 
+    { 
+        // Complete the function
+        int maxlen = 0, sum = 0;
+int i=0;
+unordered_map<int, int> m;
+ 
+while(i<n)
+{
+
+sum += A[i];
+
+if (sum == k)
+maxlen = max(i + 1, maxlen);
+
+if (m.find(sum) == m.end())
+m[sum] = i;
+
+if (m.find(sum - k) != m.end())
+maxlen = max(maxlen, i - m[sum - k]);
+
+    i++;
+}
+return maxlen;
+}
+    
+
+};
